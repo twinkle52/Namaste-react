@@ -1,21 +1,38 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// jsx is HTML like syntax, JSX is different just like js, HTML and React is different.
+// We can write normal function as well just add return even if its has single line of code
+const TitleJSX = function () {
+  return <h1 className="heading">Hello From JSX</h1>;
+};
 
-// JSX => React.creatElement => reactElemnt is JS object => HTML element when render
-// we add bracket so that babel understands the begin and end of the jsx
-const jsxHeading = <h1 className="heading">Hello From JSX</h1>; // both Parent and jsxHeading is a object, so both the code are equivalent.
-console.log(jsxHeading);
+const reactElementJSX = <h1>JS variable</h1>;
+
+const num = 20;
+// This is componenet componsition, componenet inside componenet
+const HeadingComponentJSX = () => (
+  <div id="container">
+    <TitleJSX />
+    <TitleJSX></TitleJSX>
+    {TitleJSX()}
+    {console.log("Any JS code will work inside JSX")}
+    {100}
+    {"Hi there"}
+    {100 * 10}
+    <h1>{"I can be inside the tag"}</h1>
+    {reactElementJSX}
+    {num}
+    <h1 className="heaidng">Namaste React Fucntional Component</h1>
+  </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading); // rendering means replacing not appending
 
-// const parent = React.createElement(
-//   "div",
-//   { id: "parent" },
-//   React.createElement("div", { id: "child" }, [
-//     React.createElement("h1", { id: "heading1" }, "Sibling 1"),
-//     React.createElement("h1", { id: "heading2" }, "Sibling 2"),
-//   ])
-// );
-// console.log(parent);
+root.render(<HeadingComponentJSX />);
+
+{
+  /* <TitleJSX />
+<TitleJSX></TitleJSX>
+{TitleJSX()} calling js function from jsx
+Above three will return same thing they are same. */
+}
