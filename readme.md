@@ -43,3 +43,8 @@ to get the react in our code
 - differential bundling - so that it con support old, new browser, mobile and every thing
 
 Why React is fast because of these bundlers like parcel.
+
+# npx parcel index.html
+
+so we have to use this to run and build both dev and prod code so to make it easier we will add script in package.json
+npm run build for build code in prod, npm run start for running code in dev.
