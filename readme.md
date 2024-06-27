@@ -1,4 +1,4 @@
-# hello
+# hello React
 
 # open index.html
 
