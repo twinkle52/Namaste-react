@@ -1,11 +1,24 @@
 .header {
   display: flex;
   justify-content: space-around;
-  border: 1px solid slateblue;
+  border: 1px solid #ff6347;
 }
 
-.logo {
+.company-logo-name {
+  display: flex; /* Use Flexbox to align items horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 10px; /* Space between logo and name */
+}
+
+.logo-image {
   width: 80px;
+}
+
+.logo-name {
+  font-family: "Poppins", sans-serif; /* Modern, clean font */
+  font-size: 3rem; /* Adjust size as needed */
+  font-weight: bold;
+  color: #ff6347; 
 }
 
 .nav-items > ul {
@@ -21,7 +34,9 @@
 .res-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 100px;
+  padding: 10px;
+  justify-content: center;
+  margin: 40px 0;
 }
 
 .res-cards {
@@ -33,7 +48,7 @@
 }
 
 .res-cards:hover {
-  border: 2px solid purple;
+  border: 2px solid #ff6347;
   cursor: pointer;
 }
 
