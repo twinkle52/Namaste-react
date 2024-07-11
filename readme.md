@@ -48,3 +48,23 @@ Why React is fast because of these bundlers like parcel.
 
 so we have to use this to run and build both dev and prod code so to make it easier we will add script in package.json
 npm run build for build code in prod, npm run start for running code in dev.
+
+# Xplate Food app
+
+/\*\*
+
+- Header
+- - Logo
+- - Nav items
+- Body
+- - Search
+- - Restuarant Container
+- - Restuarant Cards
+-       - Img
+-       - Name of the res, Rating, cuising, Delivery time
+- Footer
+- - Copyright
+- - Links
+- - Address
+- - Contacts
+    \*/

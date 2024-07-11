@@ -8,6 +8,7 @@
     "prodBuild": "parcel build index.html",
     "test": "jest"
   },
+  "proxy": "https://www.swiggy.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/twinkle52/Namaste-react.git"
@@ -20,10 +21,13 @@
   },
   "homepage": "https://github.com/twinkle52/Namaste-react#readme",
   "devDependencies": {
+    "buffer": "^6.0.3",
     "parcel": "^2.12.0",
     "process": "^0.11.10"
   },
   "dependencies": {
+    "axios": "^1.7.2",
+    "cors-anywhere": "^0.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

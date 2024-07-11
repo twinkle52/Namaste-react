@@ -1,73 +1,211 @@
+/* Header styling */
 .header {
-  display: flex;
-  justify-content: space-around;
-  border: 1px solid #ff6347;
-}
-
-.company-logo-name {
-  display: flex; /* Use Flexbox to align items horizontally */
-  align-items: center; /* Center items vertically */
-  gap: 10px; /* Space between logo and name */
-}
-
-.logo-image {
-  width: 80px;
-}
-
-.logo-name {
-  font-family: "Poppins", sans-serif; /* Modern, clean font */
-  font-size: 3rem; /* Adjust size as needed */
-  font-weight: bold;
-  color: #ff6347; 
-}
-
-.nav-items > ul {
-  display: flex;
-  list-style-type: none;
-}
-
-.nav-items > ul > li {
-  padding: 10px;
-  margin: 10px;
-}
-
-.res-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.res-cards {
-  width: 200px;
-  border-radius: 8px;
-  display: grid;
-  padding: 20px;
-  margin: 5px;
-}
-
-.res-cards:hover {
-  border: 2px solid #ff6347;
-  cursor: pointer;
-}
-
-.food-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-}
-.search {
-  padding: 10px;
-}
-.food-details {
-  position: relative;
-  font-family: "gilory_bold";
-  font-size: 18px;
-  padding: 5px;
-}
-.food-subTitle {
-  font-size: 16px;
-  color: rgba(2, 6, 12, 0.6);
-}
+    display: flex;
+    justify-content: space-between; /* Space out items equally */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Add padding for spacing */
+    border-bottom: 1px solid #ff6347; /* Bottom border */
+    background-color: #fff; /* White background */
+  }
+  
+  /* Company logo and name styling */
+  .company-logo-name {
+    display: flex; /* Use Flexbox to align items horizontally */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Space between logo and name */
+  }
+  
+  .logo-image {
+    width: 50px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .logo-name {
+    font-family: "Poppins", sans-serif; /* Modern, clean font */
+    font-size: 1.5rem; /* Adjust size as needed */
+    font-weight: bold;
+    color: #ff6347; 
+  }
+  
+  /* Navigation items styling */
+  .nav-items > ul {
+    display: flex;
+    list-style: none; /* Remove bullets */
+    gap: 20px; /* Space between nav items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-items > ul > li {
+    padding: 10px 15px; /* Padding for clickable area */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s; /* Smooth background transition */
+  }
+  
+  .nav-items > ul > li:hover {
+    background-color: #f0f0f0; /* Light background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+  }
+  
+  /* Restaurant container styling */
+  .res-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-left: 170px;
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+    margin: 40px 0;
+    width: 1060px; 
+  }
+  
+  /* Restaurant card styling */
+  .res-cards {
+    width: 250px;
+    height: 300px;
+    border-radius: 8px;
+    background: #fff; /* White background for cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .res-cards:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+  }
+  
+  .food-logo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Maintain aspect ratio */
+    border-bottom: 1px solid #eee; /* Subtle border */
+  }
+  
+  .food-details {
+    padding: 10px;
+    font-family: "Gilory", sans-serif; /* Use sans-serif font */
+    font-size: 1rem; /* Adjust size as needed */
+    color: #333; /* Dark text */
+  }
+  
+  .food-subTitle {
+    font-size: 0.9rem; /* Slightly smaller */
+    color: rgba(0, 0, 0, 0.6); /* Lighter text */
+  }
+  
+  /* Button styling */
+  .top-Rated-Res-Btn {
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    border: 2px solid #000; /* Black border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s, color 0.3s; /* Smooth background and color transition */
+    margin: 10px;
+  }
+  
+  .top-Rated-Res-Btn:hover {
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+  }
+  
+  /* Container for the shimmer cards */
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between shimmer cards */
+    justify-content: center;
+    padding: 20px; /* Padding to position shimmer cards below header */
+    margin: 40px 0; /* Same margin as the original cards container */
+    position: relative;
+    top: 20px; /* Move shimmer cards down slightly */
+  }
+  
+  /* Individual shimmer card styling */
+  .shimmer-card {
+    background: #f6f7f8;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  /* Shimmer card image placeholder */
+  .shimmer-card-image {
+    background: #ddd;
+    height: 150px;
+    width: 100%;
+    margin-bottom: 10px; /* Space below the image */
+  }
+  
+  /* Shimmer card content placeholder */
+  .shimmer-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between lines */
+  }
+  
+  /* Shimmer line styles */
+  .shimmer-line {
+    background: #ddd;
+    height: 16px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-line-title {
+    width: 80%;
+  }
+  
+  .shimmer-line-subtitle {
+    width: 60%;
+  }
+  
+  .shimmer-line-description {
+    width: 90%;
+    height: 12px;
+  }
+  
+  /* Shimmer animation */
+  .shimmer-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    animation: shimmer 1.5s infinite;
+  }
+  .shimmer-card-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+    margin: 40px 0;  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  
