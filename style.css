@@ -7,6 +7,13 @@
     border-bottom: 1px solid #ff6347; /* Bottom border */
     background-color: #fff; /* White background */
   }
+  .filter{
+    display: flex;
+  }
+
+  .Search{
+    padding: 20px;
+  }
   
   /* Company logo and name styling */
   .company-logo-name {

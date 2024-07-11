@@ -2,3 +2,4 @@
 /dist
 .parcel-cache
 /cors-anywhere
+/package-lock.json
