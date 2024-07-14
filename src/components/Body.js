@@ -35,14 +35,6 @@ const Body = () => {
     }
   };
 
-  // when we are typing anything in the search text box the body component is rerendering all the time.
-  // when everever there is change in the state/local variable , there will be render of the component, reconciliation cycle.
-  // e.target.value takes the value we enter in the text box, setSearchText takes the value and make the chanegs in the searchText
-  // and then the body is getting rerendered. useState if  you see is a const then how the value of the searchText is getting changed?
-  // its getting changed because the function setSearchText when takes the changed value it rerender the component and now the value
-  // of searchText is all new, all body is rendered but only that part of changes will be changed in UI, diff method is getting used
-  // recat is finding the difference between the older virtual DOM and new virtual DOM.
-  // Virtual DOM is a object representation of the jsx the actual DOM.
   return listOfRestuarants.length === 0 ? (
     <ShimmerCardList />
   ) : (

@@ -68,3 +68,8 @@ npm run build for build code in prod, npm run start for running code in dev.
 - - Address
 - - Contacts
     \*/
+
+# two types of routing
+
+- client side routing - we are working on the client side routing, the component is already present we are just linking to get that on our page.
+- server side routing - when we go to about page and the data which comes from the backend thatis a network is made to get the component is called as server side routing.
