@@ -6,17 +6,11 @@ class UserClass extends React.Component {
     this.state = {
       count: 0,
     };
-    console.log("child constructor called");
   }
 
-  componentDidMount() {
-    // is like useEffect, load the componet -> render it -> make api call -> rerender
-    console.log("child componentDidMount called");
-  }
+  componentDidMount() {}
   render() {
     const { name, location } = this.props;
-
-    console.log("child render called");
 
     return (
       <div className="user-card">
