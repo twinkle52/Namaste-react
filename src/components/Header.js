@@ -17,7 +17,7 @@ const Header = () => {
         <ul>
           <li>
             <a href="/">Home</a>
-            {/**here whole page gets reloads so don't use anchor tag */}
+            {/**here whole page gets reloads so don't use anchor tag alway use link */}
           </li>
           <li>
             <Link to="/about">About us</Link>

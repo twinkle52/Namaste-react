@@ -5,7 +5,6 @@ const RestuarantCards = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
     resData?.info;
-  console.log("Getting updated");
   const style = {
     background: "#f0f0f0",
   };

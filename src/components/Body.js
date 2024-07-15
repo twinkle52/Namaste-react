@@ -2,15 +2,14 @@ import RestuarantCards from "./RestuarantCards";
 import ShimmerCardList from "./ShimmerCardList";
 import { TOP_RATED_REST_BUTTON } from "../utils/constants";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 const Body = () => {
   const [listOfRestuarants, setListOfRestuarants] = useState([]);
-  console.log("listOfRestuarants", listOfRestuarants);
   const [filteredRest, setFilteredRest] = useState([]);
-  console.log("filteredRest", filteredRest);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    console.log("calling useeffect");
     fetchData();
   }, []);
 
@@ -19,9 +18,9 @@ const Body = () => {
       const response = await fetch(
         "http://localhost:8000/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9031568&lng=77.6482253&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
-
       const result = await response.json();
       console.log(result);
+
       setListOfRestuarants(
         result?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -47,7 +46,6 @@ const Body = () => {
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
-              console.log(e.target.value);
             }}
           ></input>
           <button
@@ -58,7 +56,6 @@ const Body = () => {
                   .toLowerCase()
                   .includes(searchText.toLowerCase());
               });
-              console.log("searched", filteredRest);
               setFilteredRest(filteredRest);
             }}
           >
@@ -68,7 +65,6 @@ const Body = () => {
         <button
           className="top-Rated-Res-Btn"
           onClick={() => {
-            console.log("");
             let filteredTopRatedList = listOfRestuarants.filter(
               (res) => res.info.avgRating > 4.2
             );
@@ -80,11 +76,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRest.map((restuarant) => (
-          <RestuarantCards
-            className="card"
+          <Link
             key={restuarant.info.id}
-            resData={restuarant}
-          />
+            to={"/resturants/" + restuarant.info.id}
+          >
+            <RestuarantCards className="card" resData={restuarant} />
+          </Link>
         ))}
       </div>
     </div>
