@@ -3,17 +3,20 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    // state here is the big object which stores all the state variables.
     this.state = {
       count: 0,
-      count2: 2,
     };
+    console.log("child constructor called");
+  }
+
+  componentDidMount() {
+    // is like useEffect, load the componet -> render it -> make api call -> rerender
+    console.log("child componentDidMount called");
   }
   render() {
-    const { name, location } = this.props; // destructure the props inside the render method same as done in function component.
-    // we destructure in function component inside function only
+    const { name, location } = this.props;
 
-    const { count2 } = this.state;
+    console.log("child render called");
 
     return (
       <div className="user-card">
@@ -22,14 +25,11 @@ class UserClass extends React.Component {
           onClick={() => {
             this.setState({
               count: this.state.count + 1,
-              count2: this.state.count2 * 2,
             });
           }}
         >
           button
         </button>
-
-        <h1>Count2: {count2}</h1>
         <h1>Name: {this.props.name}</h1>
         <h2>Location: {this.props.location}</h2>
         <h3>Contact: @twinkle123</h3>
