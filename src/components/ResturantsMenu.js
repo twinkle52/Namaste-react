@@ -1,29 +1,12 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ShimmerCardList from "./ShimmerCardList";
-import { MENU_URL } from "../utils/constants";
+import useResturantMenu from "../utils/useResturantMenu";
 
+// Single responsibilty should be given to all the components, so for the restrantsMenu we will give a single responsibilty to only show the restInfo
+// it should not worry about how to fetch that info, so we will create a custom hook.
 const ResturantsMenu = () => {
-  const [restInfo, setRestInfo] = useState(null);
-  // see we get a object with resId as the is via a below code
-  //   const params = useParams();
-  //   console.log(params);
-
   const { resId } = useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(MENU_URL + resId);
-      const jsonData = await data.json();
-      setRestInfo(jsonData.data);
-    } catch (error) {
-      console.error("Error fetching Menu:", error);
-    }
-  };
+  const restInfo = useResturantMenu(resId);
 
   // Return shimmer card list while restInfo is null
   if (restInfo === null) {

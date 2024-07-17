@@ -1,8 +1,12 @@
 import RestuarantCards from "./RestuarantCards";
 import ShimmerCardList from "./ShimmerCardList";
-import { TOP_RATED_REST_BUTTON } from "../utils/constants";
+import {
+  TOP_RATED_REST_BUTTON,
+  SWIGGY_RESTURANTS_URL,
+} from "../utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestuarants, setListOfRestuarants] = useState([]);
@@ -15,9 +19,7 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8000/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9031568&lng=77.6482253&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const response = await fetch(SWIGGY_RESTURANTS_URL);
       const result = await response.json();
       console.log(result);
 
@@ -33,6 +35,11 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return "NO internet connection";
+  }
 
   return listOfRestuarants.length === 0 ? (
     <ShimmerCardList />

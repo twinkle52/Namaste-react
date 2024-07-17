@@ -2,9 +2,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL, LOGO_NAME } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btn, setBtn] = useState("Login");
+  const onlineStatus = useOnlineStatus();
+
   return (
     <div className="header">
       <div className="company-logo-name">
@@ -15,6 +18,7 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
           <li>
             <a href="/">Home</a>
             {/**here whole page gets reloads so don't use anchor tag alway use link */}
@@ -25,6 +29,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact"> Contact us</Link>
+          </li>
+          <li>
+            <Link to="/grocery"> Grocery</Link>
           </li>
           <li>Cart</li>
           <button
