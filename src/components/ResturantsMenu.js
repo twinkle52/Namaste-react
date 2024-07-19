@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import ShimmerCardList from "./ShimmerCardList";
 import useResturantMenu from "../utils/useResturantMenu";
+import { MENU_URL } from "../utils/constants";
 
 // Single responsibilty should be given to all the components, so for the restrantsMenu we will give a single responsibilty to only show the restInfo
 // it should not worry about how to fetch that info, so we will create a custom hook.
@@ -27,6 +28,7 @@ const ResturantsMenu = () => {
 
   return (
     <div className="menu">
+      <img src={MENU_URL + cloudinaryImageId} />
       <h1>{name}</h1>
       <h2>{cuisines?.join(", ")}</h2>
       <h3>{costForTwoMessage}</h3>

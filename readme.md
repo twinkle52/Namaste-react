@@ -46,8 +46,12 @@ Why React is fast because of these bundlers like parcel.
 
 # npx parcel index.html
 
+# npm install -D tailwindcss postcss
+
+# npx tailwindcss init
+
 so we have to use this to run and build both dev and prod code so to make it easier we will add script in package.json
-npm run build for build code in prod, npm run start for running code in dev.
+npm run build for build code in prod, npm run start for running code in dev. npx invokes/initialize whatever who what to invoke may be parcel, tailwind css.
 
 # Xplate Food app
 

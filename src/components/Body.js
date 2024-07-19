@@ -44,19 +44,20 @@ const Body = () => {
   return listOfRestuarants.length === 0 ? (
     <ShimmerCardList />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="Search">
+    <div className="body ">
+      <div className="filter flex">
+        <div className="Search m-4 p-4 space-x-2 justify-center items-center flex ">
           <input
+            className="search-box border border-solid border-black placeholder-gray-500 placeholder-opacity-40 w-72 p-2 bg-white text-black focus:outline-none focus:border-black"
             type="text"
-            className="search-box"
+            placeholder="search for restaurants and foods"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           ></input>
           <button
-            className="searchButton"
+            className="searchButton px-3 py-1 bg-green-100 shadow-lg hover:bg-green-200"
             onClick={() => {
               const filteredRest = listOfRestuarants.filter((res) => {
                 return res.info.name
@@ -69,19 +70,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="top-Rated-Res-Btn"
-          onClick={() => {
-            let filteredTopRatedList = listOfRestuarants.filter(
-              (res) => res.info.avgRating > 4.2
-            );
-            setFilteredRest(filteredTopRatedList);
-          }}
-        >
-          {TOP_RATED_REST_BUTTON}
-        </button>
+        <div className="top-rated-btn-div m-4 p-4 items-center flex">
+          <button
+            className="top-Rated-Res-Btn px-3 py-1 bg-gray-100 hover:bg-gray-200"
+            onClick={() => {
+              let filteredTopRatedList = listOfRestuarants.filter(
+                (res) => res.info.avgRating > 4.2
+              );
+              setFilteredRest(filteredTopRatedList);
+            }}
+          >
+            {TOP_RATED_REST_BUTTON}
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap space-x-4 px-20">
         {filteredRest.map((restuarant) => (
           <Link
             key={restuarant.info.id}

@@ -1,40 +1,46 @@
-// Named Import
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LOGO_URL, LOGO_NAME } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btn, setBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const navigate = useNavigate();
+
+  const handleHomeClick = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    navigate("/"); // Navigate to the home route
+    window.location.reload(); // Reload the page
+  };
 
   return (
-    <div className="header">
-      <div className="company-logo-name">
-        <div className="logo-name">{LOGO_NAME}</div>
-        <div className="logo-container">
-          <img className="logo-image" src={LOGO_URL} />
+    <div className="header flex justify-between items-center px-4 py-2 shadow-lg lg:bg-green-50">
+      <Link to="/" onClick={handleHomeClick}>
+        <div className="company-logo-name-container flex items-center transition-transform transform hover:scale-105">
+          <img
+            className="logo-image w-14 m-4"
+            src={LOGO_URL}
+            alt="Company Logo"
+          />
+          <div className="logo-name text-lg font-semibold">{LOGO_NAME}</div>
         </div>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
-          <li>
-            <a href="/">Home</a>
-            {/**here whole page gets reloads so don't use anchor tag alway use link */}
-          </li>
-          <li>
+      </Link>
+      <div className="nav-items flex items-center">
+        <ul className="header-nav-items flex p-4 m-4">
+          <li className="px-3">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="px-3">
             <Link to="/about">About us</Link>
-            {/**here onlt the component which is getting called via path is getting refreshed */}
           </li>
-          <li>
-            <Link to="/contact"> Contact us</Link>
+          <li className="px-3">
+            <Link to="/contact">Contact us</Link>
           </li>
-          <li>
-            <Link to="/grocery"> Grocery</Link>
+          <li className="px-3">
+            <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-3">Cart</li>
           <button
+            className="px-5 border border-green-600"
             onClick={() => {
               btn === "Login" ? setBtn("Logout") : setBtn("Login");
             }}
@@ -46,4 +52,5 @@ const Header = () => {
     </div>
   );
 };
+
 export default Header;
