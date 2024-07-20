@@ -12,5 +12,8 @@ export const SWIGGY_RESTURANTS_URL =
 export const MENU_URL =
   "http://localhost:8000/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9031568&lng=77.6482253&restaurantId=";
 
+export const DEFAULT_FOOD_URL =
+  "https://natruda.ru/static/customer_interface/img/food_default.png";
+
 export const LOGO_NAME = "XPLATE";
 export const TOP_RATED_REST_BUTTON = "Rating: 4+";

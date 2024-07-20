@@ -1,4 +1,4 @@
-import RestuarantCards from "./RestuarantCards";
+import RestuarantCards, { WithOpenLabels } from "./RestuarantCards";
 import ShimmerCardList from "./ShimmerCardList";
 import {
   TOP_RATED_REST_BUTTON,
@@ -13,6 +13,8 @@ const Body = () => {
   const [filteredRest, setFilteredRest] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  // withOffersLabel higher order component taking input RestuarantCards componet and returning the component with offers
+  const WithOpenLabelsResturants = WithOpenLabels(RestuarantCards);
   useEffect(() => {
     fetchData();
   }, []);
@@ -44,7 +46,7 @@ const Body = () => {
   return listOfRestuarants.length === 0 ? (
     <ShimmerCardList />
   ) : (
-    <div className="body ">
+    <div className="body flex flex-wrap">
       <div className="filter flex">
         <div className="Search m-4 p-4 space-x-2 justify-center items-center flex ">
           <input
@@ -84,13 +86,21 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="res-container flex flex-wrap space-x-4 px-20">
+      <div className="res-container flex flex-wrap justify-center space-x-3 px-30">
         {filteredRest.map((restuarant) => (
           <Link
             key={restuarant.info.id}
             to={"/resturants/" + restuarant.info.id}
           >
-            <RestuarantCards className="card" resData={restuarant} />
+            {restuarant.info.aggregatedDiscountInfoV3 ? (
+              <WithOpenLabelsResturants resData={restuarant} />
+            ) : (
+              <RestuarantCards
+                className="card"
+                resData={restuarant}
+                label={restuarant.info.aggregatedDiscountInfoV3}
+              />
+            )}
           </Link>
         ))}
       </div>

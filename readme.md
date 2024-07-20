@@ -23,7 +23,7 @@ They ignite our app.
 # npm install -D parcel
 
 - when ran this packagelock.json came and node modules came, node modules is all the dependencies one will require for development from npm.
-  If i have package and packagelock.json, i can reh=generate my node modules, just do npm instal. So git will also generate.
+  If i have package and packagelock.json, i can regenerate my node modules, just do npm instal. So git will also generate.
 
 # npm install react and npm instal react dom
 
@@ -77,3 +77,9 @@ npm run build for build code in prod, npm run start for running code in dev. npx
 
 - client side routing - we are working on the client side routing, the component is already present we are just linking to get that on our page.
 - server side routing - when we go to about page and the data which comes from the backend thatis a network is made to get the component is called as server side routing.
+
+
+      <img
+        className="image m-3 p-3 size-60 object-cover rounded-t-lg"
+        src={CDN_URL + cloudinaryImageId}
+      />
