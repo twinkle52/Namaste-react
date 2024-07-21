@@ -1,11 +1,6 @@
 import { CDN_URL, DEFAULT_FOOD_URL } from "../utils/constants";
 
-// when the component handles its state by its own is called as uncontrolled componenet, here AccordianList
-// is uncontrolled component beacause the showing of items is handled by not parents but by there own.
-// so to give the controll of state to parent component is called lifting the state up
-
 const AccordianList = ({ itemCards }) => {
-  console.log("itemCards", itemCards);
   return (
     <div>
       {itemCards.map((item) => (

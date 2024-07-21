@@ -1,12 +1,15 @@
 import { useState } from "react";
 import AccordianList from "./AccordianList";
-const ResturantAccordian = (props) => {
-  const [showList, setShowList] = useState(false);
-
+const ResturantAccordian = ({ data, showItems, setShowIndexItems }) => {
+  console.log("line 4 ResturantAccordian");
+  // when the component handles its state by its own is called as uncontrolled componenet, here ResturantAccordian
+  // is uncontrolled component beacause the showing of items is handled by not parents but by there own.
+  // so to give the controll of state to parent component is called lifting the state up//
+  // sry this line of comments should be in ResturantAccordian.
   const handleClick = () => {
-    setShowList(!showList);
+    setShowIndexItems(); // as soon as the handle click is clicked this fn is called and then whole resturantmenu is getting rerender, with the index selected accordian open
+    //props setShowIndexItems is a function passed as a props will be called having a callback funtion which will change the state showIndex.
   };
-  const { data } = props;
   return (
     <div>
       <div
@@ -16,6 +19,7 @@ const ResturantAccordian = (props) => {
         <span className="font-bold text-lg py-1 px-1">
           {data.title} ({data.itemCards.length})
         </span>
+        {console.log("line 22 ResturantAccordian")}
         <span className="p-2">
           <svg
             className="-mr-1 h-5 w-5 text-black"
@@ -27,7 +31,8 @@ const ResturantAccordian = (props) => {
           </svg>
         </span>
       </div>
-      {showList && <AccordianList itemCards={data.itemCards} />}
+      {showItems && <AccordianList itemCards={data.itemCards} />}
+      {console.log("line 35 ResturantAccordian")}
     </div>
   );
 };
