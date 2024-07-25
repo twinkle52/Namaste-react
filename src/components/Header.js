@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LOGO_URL, LOGO_NAME } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/context/UserContext";
+import { ThemeContext } from "../utils/context/ThemeContext";
 
 const Header = () => {
   const [btn, setBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const navigate = useNavigate();
+  const { loggedInUser } = useContext(UserContext);
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   const handleHomeClick = (e) => {
     e.preventDefault(); // Prevent default anchor behavior
@@ -15,7 +19,11 @@ const Header = () => {
   };
 
   return (
-    <div className="header flex justify-between items-center px-4 py-2 shadow-lg lg:bg-green-50">
+    <div
+      className={`header flex justify-between items-center px-4 py-2 shadow-lg ${
+        isDarkMode ? "bg-green-700" : "lg:bg-green-50"
+      }`}
+    >
       <Link to="/" onClick={handleHomeClick}>
         <div className="company-logo-name-container flex items-center transition-transform transform hover:scale-105">
           <img
@@ -47,7 +55,18 @@ const Header = () => {
           >
             {btn}
           </button>
+          <li className="px-3">{loggedInUser}</li>
         </ul>
+        <div>
+          <button
+            className={`px-2 py-2 ml-4 border rounded text-white hover:cursor-pointer focus:outline-none ${
+              isDarkMode ? "bg-transparent" : "bg-black"
+            }`}
+            onClick={toggleTheme}
+          >
+            {isDarkMode ? "🔳" : "🔲"}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -4,14 +4,18 @@ import {
   TOP_RATED_REST_BUTTON,
   SWIGGY_RESTURANTS_URL,
 } from "../utils/constants";
-import { useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/context/UserContext";
+import { ThemeContext } from "../utils/context/ThemeContext";
 
 const Body = () => {
   const [listOfRestuarants, setListOfRestuarants] = useState([]);
   const [filteredRest, setFilteredRest] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { loggedInUser, setUserName } = useContext(UserContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   // withOffersLabel higher order component taking input RestuarantCards componet and returning the component with offers
   const WithOpenLabelsResturants = WithOpenLabels(RestuarantCards);
@@ -45,7 +49,11 @@ const Body = () => {
   return listOfRestuarants.length === 0 ? (
     <ShimmerCardList />
   ) : (
-    <div className="body flex flex-wrap">
+    <div
+      className={`body flex flex-wrap ${
+        isDarkMode ? "bg-gray-200" : "bg-white"
+      }`}
+    >
       <div className="filter flex">
         <div className="Search m-4 p-4 space-x-2 justify-center items-center flex ">
           <input
@@ -83,6 +91,14 @@ const Body = () => {
           >
             {TOP_RATED_REST_BUTTON}
           </button>
+        </div>
+        <div className="top-rated-btn-div m-4 p-4 items-center flex">
+          <label>User: </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="res-container flex flex-wrap justify-center space-x-3 px-30">
