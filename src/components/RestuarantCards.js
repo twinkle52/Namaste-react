@@ -7,7 +7,7 @@ const RestuarantCards = (props) => {
     resData?.info;
 
   return (
-    <div className="res-cards relative p-4 m-4 w-[250px] h-[27rem] bg-transparent rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
+    <div className="res-cards relative p-4 m-4 w-[250px] h-[27rem] bg-transparent transition-transform transform hover:scale-105 hover:shadow-2xl">
       <img
         className="food-logo w-full h-48 object-cover rounded-t-lg"
         alt="Meghna Biryani"

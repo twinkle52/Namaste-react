@@ -8,10 +8,9 @@ const ResturantsMenu = () => {
   const { resId } = useParams();
   const restInfo = useResturantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
-  console.log("line 11 ResturantMenu");
+  console.log(showIndex, "showIndex");
 
   if (restInfo === null) {
-    console.log("line 14 ResturantMenu");
     return <ShimmerCardList />;
   }
 
@@ -31,7 +30,6 @@ const ResturantsMenu = () => {
         c.card["card"]["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log("line 33 ResturantMenu");
   return (
     <div className="menu text-center px-20">
       <div className="border border-solid max-w-lg mx-96 h-40 border-gray-200 rounded-xl shadow-lg my-4 content-center">
@@ -39,7 +37,6 @@ const ResturantsMenu = () => {
         <h2 className="resCuisines font-serif text-orange-500">
           {cuisines?.join(", ")}
         </h2>
-        {console.log("line 41 ResturantMenu")}
 
         <h3>{costForTwoMessage}</h3>
         <h3>{"⭐️ " + avgRatingString}</h3>
@@ -48,14 +45,19 @@ const ResturantsMenu = () => {
         // for each category(recommended, ricepot... we have to build a accordian)
         categories.map((category, index) => (
           <ResturantAccordian
+            log={console.log(index, category?.card?.card.title)} // can se log in the dev tools by this
+            logIndex={console.log(showIndex)}
             key={category?.card?.card.title}
             data={category.card.card}
             showItems={index === showIndex ? true : false} // index 0 hai to usko kholdo baki ko band showItems={index === showIndex && true}
-            setShowIndexItems={() => setShowIndex(index)} // as soon as accordian is clicked setShowIndex function will be caaledback
+            // as soon as accordian is clicked setShowIndex function will be caaledback
+            setShowIndexItems={
+              () => setShowIndex(index === showIndex ? null : index) // check if the same indexAccordian is clicked then se the showIndex as null
+              //so when the component will be rendered the showIndex will be null and so it will be false for showItems
+            }
           />
         ))
       }
-      {console.log("line 55 ResturantMenu")}
     </div>
   );
 };

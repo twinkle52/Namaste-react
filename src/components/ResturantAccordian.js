@@ -7,6 +7,7 @@ const ResturantAccordian = ({ data, showItems, setShowIndexItems }) => {
   // so to give the controll of state to parent component is called lifting the state up//
   // sry this line of comments should be in ResturantAccordian.
   const handleClick = () => {
+    console.log(showItems);
     setShowIndexItems(); // as soon as the handle click is clicked this fn is called and then whole resturantmenu is getting rerender, with the index selected accordian open
     //props setShowIndexItems is a function passed as a props will be called having a callback funtion which will change the state showIndex.
   };
