@@ -8,7 +8,6 @@ const ResturantsMenu = () => {
   const { resId } = useParams();
   const restInfo = useResturantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
-  console.log(showIndex, "showIndex");
 
   if (restInfo === null) {
     return <ShimmerCardList />;

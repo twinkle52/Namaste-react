@@ -5,10 +5,14 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Header from "./components/Header";
 import ResturantsMenu from "./components/ResturantsMenu";
+import Cart from "./components/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import UserContext from "./utils/context/UserContext";
 import { ThemeContext } from "./utils/context/ThemeContext";
+import { Provider } from "react-redux"; // Provider comes from react-redux as its now time to bind redux with react
+// and that will be done by provider dependency.react-redux is like a bridge here between redux and react
+import appStore from "./utils/appStore";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -28,16 +32,19 @@ const AppLayout = () => {
     };
     setUserName(data.name);
   }, []);
+
   return (
-    //we can pass setUserName as well in the context, so bydefault wr can add state to context or can pass as well like setUserName
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <div className="app">
-          <Header />
-          <Outlet />
-        </div>
-      </UserContext.Provider>
-    </ThemeContext.Provider>
+    // Provider takes store as props and store will have value appStore, to bind our app with redux store.
+    <Provider store={appStore}>
+      <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+          <div className="app">
+            <Header />
+            <Outlet />
+          </div>
+        </UserContext.Provider>
+      </ThemeContext.Provider>
+    </Provider>
   );
 };
 
@@ -57,6 +64,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",

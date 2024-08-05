@@ -78,8 +78,16 @@ npm run build for build code in prod, npm run start for running code in dev. npx
 - client side routing - we are working on the client side routing, the component is already present we are just linking to get that on our page.
 - server side routing - when we go to about page and the data which comes from the backend thatis a network is made to get the component is called as server side routing.
 
-
       <img
         className="image m-3 p-3 size-60 object-cover rounded-t-lg"
         src={CDN_URL + cloudinaryImageId}
       />
+
+# Redux toolkit
+
+- install @reduxjs/toolkit and react-redux
+- build our store
+- connect store to our app
+- Slice(cart-slice)
+- dispatch(action)
+- selector

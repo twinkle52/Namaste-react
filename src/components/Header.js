@@ -4,6 +4,7 @@ import { LOGO_URL, LOGO_NAME } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/context/UserContext";
 import { ThemeContext } from "../utils/context/ThemeContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btn, setBtn] = useState("Login");
@@ -11,6 +12,12 @@ const Header = () => {
   const navigate = useNavigate();
   const { loggedInUser } = useContext(UserContext);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
+  // cart Subscribing to the store using a Selector
+  const cartItems = useSelector((store) => {
+    return store.cart.items;
+  });
+  console.log(cartItems, "cartItems"); // items will get added in an array
 
   const handleHomeClick = (e) => {
     e.preventDefault(); // Prevent default anchor behavior
@@ -46,7 +53,9 @@ const Header = () => {
           <li className="px-3">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-3">Cart</li>
+          <Link to="/cart">
+            <li className="px-3 font-bold">Cart- ({cartItems.length})</li>
+          </Link>
           <button
             className="px-5 border border-green-600"
             onClick={() => {
@@ -64,7 +73,7 @@ const Header = () => {
             }`}
             onClick={toggleTheme}
           >
-            {isDarkMode ? "🔳" : "🔲"}
+            {isDarkMode ? " ☀️ " : " 🌙 "}
           </button>
         </div>
       </div>
