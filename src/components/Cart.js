@@ -11,7 +11,6 @@ const Cart = () => {
 
   // read the store to get the cartItems
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
 
   const dispatch = useDispatch();
   const handleClearItem = () => {

@@ -17,7 +17,6 @@ const Header = () => {
   const cartItems = useSelector((store) => {
     return store.cart.items;
   });
-  console.log(cartItems, "cartItems"); // items will get added in an array
 
   const handleHomeClick = (e) => {
     e.preventDefault(); // Prevent default anchor behavior

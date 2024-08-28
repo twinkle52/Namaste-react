@@ -30,7 +30,6 @@ const cartSlice = createSlice({
     },
   },
 });
-console.log("in the slice");
 export const { addItem, removeItem, clearCart } = cartSlice.actions; // taking out on fly
 export default cartSlice.reducer;
 

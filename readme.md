@@ -91,3 +91,15 @@ npm run build for build code in prod, npm run start for running code in dev. npx
 - Slice(cart-slice)
 - dispatch(action)
 - selector
+
+# Testing
+
+if craeting a app using creat -react-app command this command comes in handy, as we using parcel and wrote the code from scratch we need to install below.
+
+- we need npm i -D @testing-library/react for react testing library
+- we need npm i -D jest
+- npm install --save-dev babel-jest @babel/core @babel/preset-env
+- configure babel, create babel.config.js and added.
+- create .parcelrc file, to disable default babel transpilation via parcel, now we can use our configuration
+
+so parcel whcih alraedy uses babel BTS and parcel has its own configuration for babel, and now we have written our own babel config, so parcel will get confised and a conflict will occur. So we have to make some changes in parcel configuration. create .parcelrc file
